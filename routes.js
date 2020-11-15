@@ -17,10 +17,8 @@ const App = (app => {
         network: value.network,
         phone: value.phone
       }
-      console.log(newParticipant)
       participants.insertOne(newParticipant)
       .then( docRef => {
-        // console.log(docRef)
         res.json( new APIResponse(true, 'Thanks for participating. Your info has been received!'))
       }).catch( error => {
         res.json(new APIResponse(false, 'Error storing your data. Please try again.'))

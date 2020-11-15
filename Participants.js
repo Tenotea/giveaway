@@ -1,3 +1,4 @@
 const mongoDB = require('mongodb')
+require('dotenv').config()
 
-module.exports = async () => (await mongoDB.MongoClient.connect('mongodb://127.0.0.1:27017/giveaway', {useUnifiedTopology: true, useNewUrlParser: true})).db('giveway')
+module.exports = async () => (await mongoDB.MongoClient.connect(process.env.DATABASE_URI, {useUnifiedTopology: true, useNewUrlParser: true})).db('giveway')
