@@ -14,7 +14,7 @@ request.addEventListener('click', (e) => {
     network: network.value,
     phone: number.value
   }
-  axios.post('https://giveaway-btd.herokuapp.com/',
+  axios.post('https://giveaway-btd.herokuapp.com/submit',
     data,
     {
       headers: {
