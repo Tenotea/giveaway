@@ -2,14 +2,19 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
     <title> Happy Birthday Tenotea </title>
   </head>
   <body class="bg-gray-200">
     <main class="min-h-screen w-screen flex items-center justify-center flex-col">
       <p class="text-2xl mb-8 font-serif text-center font-medium"> Happy Birthday Tenotea💃 </p>
       <form action="/" method="post" accept-charset="utf-8" id="form"
-        class="bg-white max-w-screen-sm w-11/12 pt-8 px-5 mx-auto shadow-lg rounded-lg"
+        class="bg-white max-w-screen-sm w-11/12 pt-12 px-5 sm:px-8 mx-auto shadow-lg rounded-lg"
       >
         <div class="py-2 px-4 border-2 border-gray-200 rounded" style="width: fit-content">
           <select class="bg-white outline-none" id="network">
@@ -25,12 +30,18 @@
           <label for="number" class="font-medium mb-2 text-lg text-gray-800 mb-2 block"> Phone number: </label>
           <input type="number" name="number" id="number" class="border-2 border-gray-200 rounded outline-none block h-10 px-4 w-full" />
         </div>
-        
-        <button type="submit" id="request" class="w-full py-3 mt-4 text-white bg-green-400 rounded-sm"> Send Request </button>
+
+        <button type="submit" id="request" class="w-full py-2 mt-4 text-white bg-green-400 rounded-sm"> Send Request </button>
         <p class="text-center my-6"> A present from <b> Tenotea </b></p>
       </form>
     </main>
-    <div class="fixed bg-white inset-0 hidden">
+    <div class="fixed bg-black inset-0 bg-opacity-50 flex items-center justify-center hidden" id="overlay">
+      <div id="loader" class="max-w-screen-sm w-11/12 h-24 bg-white rounded-lg flex items-center justify-center animate__animated animate__bounceIn">
+        <div class="w-8 h-8 rounded-full bg-transparent border-4 border-orange-200 animate-spin" style="border-top-color: orange;"> </div>
+      </div>
+      <div id="response-cover" class="max-w-screen-sm w-11/12 h-24 bg-white rounded-lg flex items-center justify-center animate__animated animate__bounceIn hidden p-4">
+        <div id="response" class="text-xl font-medium text-center"> Thanks for partcipating </div>
+      </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
     <script src="./index.js"></script>

@@ -1,19 +1,39 @@
 let network = document.getElementById('network');
 let number = document.getElementById('number');
 let request = document.getElementById('request');
-let form =document.getElementById('form');
+
+const overlay = document.getElementById('overlay')
+const responseCover = document.getElementById('response-cover')
+const resposne = document.getElementById('response')
+const loader = document.getElementById('loader')
 
 request.addEventListener('click', (e) => {
   e.preventDefault();
-  let formData = new FormData();
-  formData.append('network', network.value);
-  formData.append('phone', number.value);
-  
-  axios.post('https://giveaway-btd.herokuapp.com/submit',
-    formData
+  overlay.classList.remove('hidden')
+  let data = {
+    network: network.value,
+    phone: number.value
+  }
+  axios.post('http://192.168.43.9:3000/submit',
+    data,
+    {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
   ).then( body => {
-    console.log(body.data);
+    if( body.data.success){
+      resposne.classList.add('text-green-600')
+    } else {
+      resposne.classList.add('text-red-600')
+    }
+    responseCover.classList.remove('hidden')
+    loader.classList.add('hidden')
+    resposne.textContent = body.data.msg
   }).catch( e => {
-    console.log(e.toJSON());
+    responseCover.classList.remove('hidden')
+    loader.classList.add('hidden')
+    resposne.classList.add('text-red-600')
+    resposne.textContent = e.message
   });
 });
