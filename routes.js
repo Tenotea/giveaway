@@ -1,5 +1,5 @@
 const express = require('express')
-const urlEndcodedParser = express.json()
+const urlEndcodedParser = express.json({verify: false})
 const Schema = require('./joi')
 const Participants = require('./Participants')
 const APIResponse = require('./Response')

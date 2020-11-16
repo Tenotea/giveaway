@@ -1,7 +1,7 @@
 class APIResponse {
   constructor(success, msg){
     this.success = success
-    this.mag = msg
+    this.msg = msg
   }
 }
 
