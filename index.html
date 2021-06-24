@@ -31,7 +31,7 @@
           <input type="number" name="number" id="number" class="border-2 border-gray-200 rounded outline-none block h-10 px-4 w-full" />
         </div>
 
-        <button type="submit" id="request" class="w-full py-2 mt-4 text-white bg-green-400 rounded-sm"> Send Request </button>
+        <button type="submit" class="w-full py-2 mt-4 text-white bg-green-400 rounded-sm button"> Send Request </button>
         <p class="text-center my-6"> A present from <b> Tenotea </b></p>
       </form>
     </main>
@@ -45,6 +45,42 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
     <script src="./index.js"></script>
+       <script>
+        var button = document.querySelector('.button')
+        button.addEventListener('click', onButtonClick)
+
+        function onButtonClick () {
+            BE_API.openChatWindow()
+            hideButton()
+        }
+
+        function showButton () {
+            button.classList.remove('hidden')
+        }
+
+        function hideButton () {
+            button.classList.add('hidden')
+        }
+
+        window.BE_API = window.BE_API || {}
+
+        window.BE_API.onLoad = function () {
+            window.BE_API.hideChatWindow()
+            showButton()
+        }
+
+        window.BE_API.onChatWindowOpen = function () {
+            hideButton()
+        }
+
+        window.BE_API.onChatWindowClose = function () {
+            window.BE_API.hideChatWindow()
+        }
+
+        window.BE_API.onChatWindowHide = function () {
+            showButton()
+        }
+    </script>
     <!-- Start of ChatBot (www.chatbot.com) code -->
     <script type="text/javascript">
         window.__be = window.__be || {};
